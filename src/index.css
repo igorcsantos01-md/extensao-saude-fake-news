@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+:root {
+  /* MÓDULO 1: PALETA DE CORES ORIGINAL ("BIO-EDITORIAL EMERALD & OXFORD NAVY") */
+  /* Verde Esmeralda Científico (Primária - Editora Mente e Saúde) */
+  --emerald-dark: #064E3B;
+  --emerald-vibrant: #0D9488;
+  --emerald-soft: #ECFDF5;
+
+  /* Azul Oxford Institucional (Secundária - Centro Profissionalizante) */
+  --oxford-deep: #0A1D56;
+  --oxford-royal: #1D4ED8;
+  --oxford-soft: #EFF6FF;
+
+  /* Âmbar Solar / Ouro Acadêmico (Destaques e Selos de Autenticidade) */
+  --amber-gold: #D97706;
+  --amber-soft: #FEF3C7;
+
+  /* Fundo Geral, Papel do Certificado e Tipografia */
+  --bg-main: #F8FAFC;
+  --bg-parchment: #FFFDF9;
+  --text-slate: #0F172A;
+
+  /* Fontes Institucionais */
+  --font-serif-cert: 'Cormorant Garamond', Georgia, serif;
+  --font-cinzel-cert: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-sans-portal: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono-code: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans-portal);
+  background-color: var(--bg-main);
+  color: var(--text-slate);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-slate);
+  font-family: var(--font-sans-portal);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-cert-serif {
+  font-family: var(--font-serif-cert);
+}
+
+.font-cert-cinzel {
+  font-family: var(--font-cinzel-cert);
+}
+
+.font-portal-sans {
+  font-family: var(--font-sans-portal);
+}
+
+.font-code-mono {
+  font-family: var(--font-mono-code);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   MÓDULO 2: TRATAMENTO INTELIGENTE VIA CSS DAS IMAGENS E ASSINATURAS
+   ========================================================================== */
+
+/* 1. Logo do Centro Profissionalizante (./assets/logo-centro.png)
+   Recorta perfeitamente o círculo azul-marinho e elimina 100% das bordas quadradas claras */
+.logo-centro-container {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(10, 29, 86, 0.15);
+  background-color: var(--oxford-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo-centro-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(10, 29, 86, 0.15);
+  /* Escala calibrada para eliminar a margem quadrada cinza-clara externa da imagem original */
+  transform: scale(1.44);
+  transform-origin: center center;
+  display: block;
+}
+
+/* 2. Logo da Editora Mente e Saúde (./assets/logo-editora.png)
+   Integra o fundo verde-menta (#C8FCE1) com moldura escudo arredondado e mix-blend-mode */
+.logo-editora-container {
+  border-radius: 16px;
+  background: linear-gradient(145deg, #ECFDF5 0%, #C8FCE1 100%);
+  border: 2px solid var(--emerald-dark);
+  outline: 2px solid rgba(13, 148, 136, 0.28);
+  outline-offset: 2px;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.12);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.logo-editora-container-circle {
+  border-radius: 50%;
+  background: radial-gradient(circle, #ECFDF5 35%, #C8FCE1 100%);
+  border: 2px solid var(--emerald-dark);
+  outline: 2px solid rgba(13, 148, 136, 0.3);
+  outline-offset: 2px;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.14);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.logo-editora-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  mix-blend-mode: multiply;
+  display: block;
+}
+
+/* 3. Assinaturas (./assets/assinatura-barbara.png e ./assets/assinatura-james.png)
+   Remove instantaneamente qualquer fundo de papel fotografado, deixando apenas o traço nítido */
+.assinatura-rubrica-img {
+  filter: contrast(220%) brightness(108%) grayscale(100%);
+  mix-blend-mode: multiply;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   MOLDURA GUILLOCHÉ ACADÊMICA E CERTIFICADO A4 PAISAGEM (297mm x 210mm)
+   ========================================================================== */
+.cert-a4-sheet {
+  width: 1122px; /* 297mm equivalente em 96dpi para visualização fiel */
+  height: 793px; /* 210mm equivalente em 96dpi */
+  background-color: var(--bg-parchment);
+  color: var(--text-slate);
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45), 0 0 0 1px rgba(217, 119, 6, 0.25);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(6, 78, 59, 0.035) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(10, 29, 86, 0.035) 0%, transparent 45%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(217, 119, 6, 0.018) 0px,
+      rgba(217, 119, 6, 0.018) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(6, 78, 59, 0.015) 0px,
+      rgba(6, 78, 59, 0.015) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+}
+
+.guilloche-outer-border {
+  position: absolute;
+  inset: 14px;
+  border: 2.5px solid var(--emerald-dark);
+  pointer-events: none;
+}
+
+.guilloche-middle-border {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid var(--amber-gold);
+  pointer-events: none;
+}
+
+.guilloche-inner-border {
+  position: absolute;
+  inset: 25px;
+  border: 1.5px solid var(--oxford-deep);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CALIBRAÇÃO DE IMPRESSÃO NATIVA (@media print) — A4 PAISAGEM EXATO
+   ========================================================================== */
+@page {
+  size: A4 landscape;
+  margin: 0mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: #FFFDF9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 297mm !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .cert-zoom-stage {
+    transform: none !important;
+    width: 297mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .cert-a4-sheet {
+    width: 297mm !important;
+    height: 210mm !important;
+    max-width: 297mm !important;
+    max-height: 210mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .cert-a4-sheet:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  /* Quando o visitante optar por imprimir especificamente o Mini E-book */
+  body.printing-ebook .cert-print-section {
+    display: none !important;
+  }
+
+  body.printing-ebook .ebook-print-sheet {
+    display: block !important;
+  }
+}

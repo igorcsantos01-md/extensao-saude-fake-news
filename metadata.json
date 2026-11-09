@@ -1,0 +1,6 @@
+{
+  "name": "Portal de Extensão e Validação — Editora Mente e Saúde & Centro Profissionalizante Maria Dalva de Araújo",
+  "description": "Portal Oficial da Campanha Educativa de Conscientização sobre Vacinação e Validação Pública de Certificados de Extensão promovido pela Editora Mente e Saúde (CNPJ: 51.372.335/0001-71) e Centro Profissionalizante Maria Dalva de Araújo (CNPJ: 51.269.112/0001-83).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
